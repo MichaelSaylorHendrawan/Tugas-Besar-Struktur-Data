@@ -52,3 +52,4 @@ void deleteFirstPeserta(ListPeserta &LP, ListRelasi &LR);
 void deleteLastPeserta(ListPeserta &LP, ListRelasi &LR);
 Peserta* cariPeserta(ListPeserta LP, int id);
 void hapusPeserta(ListPeserta &LP, int id, ListRelasi &LR);
+//lanjutin ini
