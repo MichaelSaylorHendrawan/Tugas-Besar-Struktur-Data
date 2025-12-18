@@ -16,3 +16,46 @@ void tampilkanMenu() {
     cout << "================================================" << endl;
     cout << "Pilihan: ";
 }
+
+void menuPeserta(ListPeserta &LP, ListRelasi &LR) {
+    int pilihan;
+    do{
+        clearScreen();
+        tampilkanHeader("KELOLA DATA PESERTA");
+        cout << "1. Tambah Peserta di Awal" << endl;
+        cout << "2. Tambah Peserta di Akhir" << endl;
+        cout << "3. Hapus Peserta di Awal" << endl;
+        cout << "4. Hapus Peserta di Akhir" << endl;
+        cout << "5. Hapus Peserta Berdasarkan ID" << endl;
+        cout << "6. Cari Peserta Berdasarkan ID" << endl;
+        cout << "7. Tampilkan Semua Peserta" << endl;
+        cout << "8. Hitung Total Peserta" << endl;
+        cout << "0. Kembali ke Menu Utama" << endl;
+        cout << "==========================================" << endl;
+        cout << "PilihanL ";
+        cin >> pilihan;
+
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+        switch (pilihan) {
+            case 1: {
+                int id, umur:
+                string nama, email;
+
+                cout >> "\nMasukkan ID Peserta: ";
+                cin >> idl
+                cin.ignore();
+                cout << "Masukkan Nama Peserta: ";
+                getline(cin, nama);
+                cout << ("Masukkan Email Peserta: ";
+                getline(cin, email);
+                cout << ("Masukkan Umur Peserta: ";
+                cin >> umur;
+
+                insertFirstPeserta(LP, id, nama, email, umur);
+                enterUntukLanjut();
+                break
+            }
+
+            
+}
