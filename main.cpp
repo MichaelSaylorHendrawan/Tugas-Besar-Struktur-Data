@@ -54,8 +54,34 @@ void menuPeserta(ListPeserta &LP, ListRelasi &LR) {
 
                 insertFirstPeserta(LP, id, nama, email, umur);
                 enterUntukLanjut();
-                break
+                break;
             }
 
-            
+                case 2: {
+                    int id, umur;
+                    string nama, email;
+
+                    cout >> "\nMasukkan ID Peserta: ";
+                    cin >> idl
+                    cin.ignore();
+                    cout << "Masukkan Nama Peserta: ";
+                    getline(cin, nama);
+                    cout << ("Masukkan Email Peserta: ";
+                    getline(cin, email);
+                    cout << ("Masukkan Umur Peserta: ";
+                    cin >> umur;
+
+                    insertLastPeserta(LP, id, nama, email, umur);
+                    enterUntukLanjut();
+                    break;
+                    }
+
+                    case 3: 
+                        deleteFirstPeserta(LP, LR);
+                        enterUntukLanjut();
+                        break;
+
+                        case 4:
+                    
 }
+
