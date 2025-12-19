@@ -2,28 +2,57 @@
 #define PESERTA_H
 
 #include <iostream>
+#include <string>
 using namespace std;
 
-// Menyimpan data peserta dan pointer ke peserta berikutnya
-// Pointer next menandakan bahwa struktur ini adalah linked list
+//ADT PESERTA
+
 struct Peserta {
-    int idPeserta;
+    int id;
     string nama;
-    Peserta* next;
+    string email;
+    int umur;
+    Peserta *next;
 };
 
-// Menyimpan alamat node pertama dari linked list peserta
-// Ini adalah implementasi ADT List Peserta
 struct ListPeserta {
-    Peserta* first;
+    Peserta *first;
 };
 
+//  ADT KEJUARAAN
 
-// prototype fungsi
-void createListPeserta(ListPeserta &LP); // Menginisialisasi list peserta (list kosong)
-void insertPeserta(ListPeserta &LP, int id, string nama); // Menambahkan peserta baru ke dalam list
-Peserta* cariPeserta(ListPeserta LP, int id); // Mencari peserta berdasarkan id
-void hapusPeserta(ListPeserta &LP, int id); // Menghapus peserta berdasarkan id
+struct Kejuaraan {
+    int id;
+    string nama;
+};
+
+//ADT RELASI (M–N)
+
+struct Relasi {
+    Peserta *peserta;
+    Kejuaraan kejuaraan;
+    Relasi *next;
+};
+
+struct ListRelasi {
+    Relasi *first;
+};
+
+// PROTOTYPE FUNGSI
+
+// Peserta
+void createListPeserta(ListPeserta &LP);
+void insertFirstPeserta(ListPeserta &LP, int id, string nama, string email, int umur);
+void insertLastPeserta(ListPeserta &LP, int id, string nama, string email, int umur);
+Peserta* cariPeserta(ListPeserta LP, int id);
+void hapusPeserta(ListPeserta &LP, int id, ListRelasi &LR);
+void tampilkanSemuaPeserta(ListPeserta LP);
+int hitungTotalPeserta(ListPeserta LP);
+
+// Relasi
+void createListRelasi(ListRelasi &LR);
+void buatRelasi(ListRelasi &LR, Peserta *P, int idKej, string namaKej);
+void hapusRelasiPeserta(ListRelasi &LR, Peserta *P);
+void tampilkanPesertaDenganKejuaraan(ListPeserta LP, ListRelasi LR);
 
 #endif
-
