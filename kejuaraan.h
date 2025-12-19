@@ -52,4 +52,19 @@ void deleteFirstPeserta(ListPeserta &LP, ListRelasi &LR);
 void deleteLastPeserta(ListPeserta &LP, ListRelasi &LR);
 Peserta* cariPeserta(ListPeserta LP, int id);
 void hapusPeserta(ListPeserta &LP, int id, ListRelasi &LR);
-//lanjutin ini
+void tampilkanSemuaPeserta(ListPeserta LP);
+int hitungTotalPeserta(ListPeserta LP);
+
+/* ===== PROTOTIPE FUNGSI KEJUARAAN ===== */
+void createListKejuaraan(ListKejuaraan &LK);
+void insertKejuaraan(ListKejuaraan &LK, int id, string nama, string kategori, int tahun);
+Kejuaraan* cariKejuaraan(ListKejuaraan LK, int id);
+void tampilkanSemuaKejuaraan(ListKejuaraan LK);
+
+/* ===== PROTOTIPE FUNGSI RELASI ===== */
+void createListRelasi(ListRelasi &LR);
+void tambahRelasi(ListRelasi &LR, Peserta* P, Kejuaraan* K, string tanggal);
+void hapusRelasiPeserta(ListRelasi &LR, Peserta* P);
+void tampilkanRelasi(ListRelasi LR);
+
+#endif
