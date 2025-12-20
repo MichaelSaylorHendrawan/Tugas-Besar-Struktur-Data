@@ -2,11 +2,35 @@
 #define KEJUARAAN_H
 
 #include <iostream>
+#include <string>
 using namespace std;
+
+// ==================== DOUBLE LINKED LIST CIRCULAR ====================
+// Digunakan untuk list DENGAN relasi (memenuhi syarat berbeda)
+
+struct Peserta {
+    int idPeserta;
+    string nama;
+    string email;           // Data tambahan untuk memenuhi minimal 3 data
+    int umur;               // Data tambahan bertipe integer
+    Peserta* next;
+    Peserta* prev;
+};
+
+struct ListPeserta {
+    Peserta* first;
+    Peserta* last;
+};
+
+// ==================== SINGLE LINKED LIST ====================
+// Digunakan untuk list TANPA relasi
 
 struct Kejuaraan {
     int idKejuaraan;
     string nama;
+    string kategori;        // Data tambahan untuk memenuhi minimal 3 data
+    int tahun;              // Data tambahan bertipe integer
+    int jumlahPeserta;
     Kejuaraan* next;
 };
 
@@ -14,8 +38,28 @@ struct ListKejuaraan {
     Kejuaraan* first;
 };
 
-void createListKejuaraan(ListKejuaraan &LK);
-void insertKejuaraan(ListKejuaraan &LK, int id, string nama);
-Kejuaraan* cariKejuaraan(ListKejuaraan LK, int id);
+// ==================== STRUCT RELASI ====================
 
-#endif
+struct Relasi {
+    Peserta* peserta;
+    Kejuaraan* kejuaraan;
+    string tanggalDaftar;   // Data tambahan untuk relasi
+    Relasi* next;
+};
+
+struct ListRelasi {
+    Relasi* first;
+};
+
+// ==================== PROTOTIPE FUNGSI PESERTA (DOUBLE CIRCULAR) ====================
+
+void createListPeserta(ListPeserta &LP);
+void insertFirstPeserta(ListPeserta &LP, int id, string nama, string email, int umur);
+void insertLastPeserta(ListPeserta &LP, int id, string nama, string email, int umur);
+void deleteFirstPeserta(ListPeserta &LP, ListRelasi &LR);
+void deleteLastPeserta(ListPeserta &LP, ListRelasi &LR);
+Peserta* cariPeserta(ListPeserta LP, int id);
+void hapusPeserta(ListPeserta &LP, int id, ListRelasi &LR);
+void tampilkanSemuaPeserta(ListPeserta LP);
+void tampilkanPesertaDenganKejuaraan(ListPeserta LP, ListRelasi LR);
+int hitungTotalPeserta(ListPeserta LP);
