@@ -63,3 +63,37 @@ void hapusPeserta(ListPeserta &LP, int id, ListRelasi &LR);
 void tampilkanSemuaPeserta(ListPeserta LP);
 void tampilkanPesertaDenganKejuaraan(ListPeserta LP, ListRelasi LR);
 int hitungTotalPeserta(ListPeserta LP);
+
+// ==================== PROTOTIPE FUNGSI KEJUARAAN (SINGLE LINKED LIST) ====================
+
+void createListKejuaraan(ListKejuaraan &LK);
+void insertFirstKejuaraan(ListKejuaraan &LK, int id, string nama, string kategori, int tahun);
+void insertLastKejuaraan(ListKejuaraan &LK, int id, string nama, string kategori, int tahun);
+void deleteFirstKejuaraan(ListKejuaraan &LK, ListRelasi &LR);
+void deleteLastKejuaraan(ListKejuaraan &LK, ListRelasi &LR);
+Kejuaraan* cariKejuaraan(ListKejuaraan LK, int id);
+void hapusKejuaraan(ListKejuaraan &LK, int id, ListRelasi &LR);
+void tampilkanSemuaKejuaraan(ListKejuaraan LK);
+void tampilkanKejuaraanPopuler(ListKejuaraan LK, ListRelasi LR);
+void tampilkanPesertaSedikitKejuaraan(ListPeserta LP, ListRelasi LR);
+int hitungTotalKejuaraan(ListKejuaraan LK);
+
+// ==================== PROTOTIPE FUNGSI RELASI ====================
+
+void createListRelasi(ListRelasi &LR);
+void buatRelasi(ListRelasi &LR, Peserta* P, Kejuaraan* K, string tanggal);
+void hapusRelasiPeserta(ListRelasi &LR, Peserta* P);
+void hapusRelasiKejuaraan(ListRelasi &LR, Kejuaraan* K);
+void tampilkanPesertaKejuaraan(Kejuaraan* K, ListRelasi LR);
+void tampilkanKejuaraanPeserta(Peserta* P, ListRelasi LR);
+int hitungJumlahPesertaKejuaraan(Kejuaraan* K, ListRelasi LR);
+int hitungJumlahKejuaraanPeserta(Peserta* P, ListRelasi LR);
+
+// ==================== FUNGSI MENU DAN UTILITAS ====================
+
+void tampilkanMenu();
+void clearScreen();
+void tampilkanHeader(string judul);
+void enterUntukLanjut();
+
+#endif
