@@ -132,3 +132,120 @@ void menuPeserta(ListPeserta &LP, ListRelasi &LR) {
         }
     } while (pilihan != 0);
 }
+
+void menuKejuaraan(ListKejuaraan &LK, ListRelasi &LR) {
+    int pilihan;
+    do {
+        clearScreen();
+        tampilkanHeader("KELOLA DATA KEJUARAAN");
+        cout << "1. Tambah Kejuaraan di Awal (Insert First)" << endl;
+        cout << "2. Tambah Kejuaraan di Akhir (Insert Last)" << endl;
+        cout << "3. Hapus Kejuaraan di Awal (Delete First)" << endl;
+        cout << "4. Hapus Kejuaraan di Akhir (Delete Last)" << endl;
+        cout << "5. Hapus Kejuaraan Berdasarkan ID" << endl;
+        cout << "6. Cari Kejuaraan Berdasarkan ID" << endl;
+        cout << "7. Tampilkan Semua Kejuaraan" << endl;
+        cout << "8. Hitung Total Kejuaraan" << endl;
+        cout << "0. Kembali ke Menu Utama" << endl;
+        cout << "================================================" << endl;
+        cout << "Pilihan: ";
+        cin >> pilihan;
+        
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        
+        switch (pilihan) {
+            case 1: {
+                int id, tahun;
+                string nama, kategori;
+                
+                cout << "\nMasukkan ID Kejuaraan: ";
+                cin >> id;
+                cin.ignore();
+                cout << "Masukkan Nama Kejuaraan: ";
+                getline(cin, nama);
+                cout << "Masukkan Kategori Kejuaraan: ";
+                getline(cin, kategori);
+                cout << "Masukkan Tahun Kejuaraan: ";
+                cin >> tahun;
+                
+                insertFirstKejuaraan(LK, id, nama, kategori, tahun);
+                enterUntukLanjut();
+                break;
+            }
+            
+            case 2: {
+                int id, tahun;
+                string nama, kategori;
+                
+                cout << "\nMasukkan ID Kejuaraan: ";
+                cin >> id;
+                cin.ignore();
+                cout << "Masukkan Nama Kejuaraan: ";
+                getline(cin, nama);
+                cout << "Masukkan Kategori Kejuaraan: ";
+                getline(cin, kategori);
+                cout << "Masukkan Tahun Kejuaraan: ";
+                cin >> tahun;
+                
+                insertLastKejuaraan(LK, id, nama, kategori, tahun);
+                enterUntukLanjut();
+                break;
+            }
+            
+            case 3:
+                deleteFirstKejuaraan(LK, LR);
+                enterUntukLanjut();
+                break;
+                
+            case 4:
+                deleteLastKejuaraan(LK, LR);
+                enterUntukLanjut();
+                break;
+                
+            case 5: {
+                int id;
+                cout << "\nMasukkan ID Kejuaraan yang akan dihapus: ";
+                cin >> id;
+                hapusKejuaraan(LK, id, LR);
+                enterUntukLanjut();
+                break;
+            }
+            
+            case 6: {
+                int id;
+                cout << "\nMasukkan ID Kejuaraan yang dicari: ";
+                cin >> id;
+                Kejuaraan* K = cariKejuaraan(LK, id);
+                if (K != NULL) {
+                    cout << "\nKejuaraan ditemukan:" << endl;
+                    cout << "ID: " << K->idKejuaraan << endl;
+                    cout << "Nama: " << K->nama << endl;
+                    cout << "Kategori: " << K->kategori << endl;
+                    cout << "Tahun: " << K->tahun << endl;
+                    cout << "Jumlah Peserta: " << K->jumlahPeserta << endl;
+                } else {
+                    cout << "Kejuaraan tidak ditemukan!" << endl;
+                }
+                enterUntukLanjut();
+                break;
+            }
+            
+            case 7:
+                tampilkanSemuaKejuaraan(LK);
+                enterUntukLanjut();
+                break;
+                
+            case 8:
+                cout << "\nTotal Kejuaraan: " << hitungTotalKejuaraan(LK) << endl;
+                enterUntukLanjut();
+                break;
+                
+            case 0:
+                break;
+                
+            default:
+                cout << "Pilihan tidak valid!" << endl;
+                enterUntukLanjut();
+        }
+    } while (pilihan != 0);
+}
