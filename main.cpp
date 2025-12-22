@@ -352,7 +352,71 @@ void menuRelasi(ListPeserta &LP, ListKejuaraan &LK, ListRelasi &LR) {
     } while (pilihan != 0);
 }
 
-////////
+void menuLaporan(ListPeserta &LP, ListKejuaraan &LK, ListRelasi &LR) {
+    int pilihan;
+    do {
+        clearScreen();
+        tampilkanHeader("LAPORAN DAN ANALISIS");
+        cout << "1. Tampilkan Semua Peserta dengan Kejuaraannya" << endl;
+        cout << "2. Tampilkan Kejuaraan Paling Populer" << endl;
+        cout << "3. Tampilkan Peserta dengan Kejuaraan Minimum" << endl;
+        cout << "4. Tampilkan Statistik Sistem" << endl;
+        cout << "0. Kembali ke Menu Utama" << endl;
+        cout << "================================================" << endl;
+        cout << "Pilihan: ";
+        cin >> pilihan;
+        
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        
+        switch (pilihan) {
+            case 1:
+                tampilkanPesertaDenganKejuaraan(LP, LR);
+                enterUntukLanjut();
+                break;
+                
+            case 2:
+                tampilkanKejuaraanPopuler(LK, LR);
+                enterUntukLanjut();
+                break;
+                
+            case 3:
+                tampilkanPesertaSedikitKejuaraan(LP, LR);
+                enterUntukLanjut();
+                break;
+                
+            case 4: {
+                clearScreen();
+                tampilkanHeader("STATISTIK SISTEM");
+                cout << "Total Peserta: " << hitungTotalPeserta(LP) << endl;
+                cout << "Total Kejuaraan: " << hitungTotalKejuaraan(LK) << endl;
+                
+                // Hitung total relasi
+                int totalRelasi = 0;
+                Relasi* R = LR.first;
+                while (R != NULL) {
+                    totalRelasi++;
+                    R = R->next;
+                }
+                cout << "Total Relasi: " << totalRelasi << endl;
+                
+                // Rata-rata kejuaraan per peserta
+                if (hitungTotalPeserta(LP) > 0) {
+                    float rata2 = (float)totalRelasi / hitungTotalPeserta(LP);
+                    cout << "Rata-rata kejuaraan per peserta: " << fixed << setprecision(2) << rata2 << endl;
+                }
+                enterUntukLanjut();
+                break;
+            }
+            
+            case 0:
+                break;
+                
+            default:
+                cout << "Pilihan tidak valid!" << endl;
+                enterUntukLanjut();
+        }
+    } while (pilihan != 0);
+}
 
 int main() {
     ListPeserta LP;
